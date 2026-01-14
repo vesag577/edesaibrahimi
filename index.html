@@ -1,0 +1,1657 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EDESA — Portfolio</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --bg0: #05020a;
+      --bg1: #090216;
+      --card: #0b0616cc;
+      --card2: #0d071be6;
+
+      --text: #f2eefc;
+      --muted: #b9b2cc;
+
+      --a0: #b100ff;
+      /* magenta */
+      --a1: #6d2cff;
+      /* purple  */
+      --a2: #ff3dff;
+      /* hot glow */
+
+      --stroke: rgba(177, 0, 255, .35);
+      --stroke2: rgba(109, 44, 255, .25);
+
+      --shadow: 0 22px 60px rgba(0, 0, 0, .65);
+      --shadow2: 0 18px 50px rgba(0, 0, 0, .55);
+
+      --radius: 18px;
+      --radius2: 22px;
+
+      --max: 1120px;
+      --navH: 64px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(1200px 700px at 20% 10%, rgba(177, 0, 255, .14), transparent 60%),
+        radial-gradient(900px 560px at 85% 22%, rgba(109, 44, 255, .12), transparent 58%),
+        radial-gradient(800px 600px at 50% 95%, rgba(255, 61, 255, .08), transparent 60%),
+        linear-gradient(180deg, #020006 0%, #05020a 40%, #04010a 100%);
+      overflow-x: hidden;
+    }
+
+    /* Soft star noise (subtle) */
+    body:before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .14;
+      background-image:
+        radial-gradient(1px 1px at 10% 20%, rgba(255, 255, 255, .35) 40%, transparent 41%),
+        radial-gradient(1px 1px at 35% 70%, rgba(255, 255, 255, .25) 40%, transparent 41%),
+        radial-gradient(1px 1px at 78% 35%, rgba(255, 255, 255, .22) 40%, transparent 41%),
+        radial-gradient(1px 1px at 62% 82%, rgba(255, 255, 255, .18) 40%, transparent 41%),
+        radial-gradient(1px 1px at 90% 60%, rgba(255, 255, 255, .22) 40%, transparent 41%);
+      background-size: 320px 320px;
+      mix-blend-mode: screen;
+      filter: blur(.2px);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 64px));
+      margin: 0 auto;
+    }
+
+    /* NAV */
+    .navShell {
+      position: fixed;
+      top: 18px;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      display: flex;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    .nav {
+      pointer-events: auto;
+      height: var(--navH);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, rgba(15, 9, 26, .70), rgba(8, 4, 14, .55));
+      border: 1px solid rgba(255, 255, 255, .06);
+      box-shadow:
+        0 16px 50px rgba(0, 0, 0, .55),
+        0 0 0 1px rgba(177, 0, 255, .08) inset;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .nav .brandMini {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .03);
+      border: 1px solid rgba(255, 255, 255, .06);
+    }
+
+    .brandDot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, .9), rgba(255, 255, 255, 0) 45%),
+        radial-gradient(circle at 50% 55%, var(--a2), var(--a1) 58%, rgba(0, 0, 0, 0) 62%);
+      box-shadow: 0 0 20px rgba(177, 0, 255, .55);
+    }
+
+    .brandMini span {
+      font-family: Space Grotesk, Inter, sans-serif;
+      font-weight: 700;
+      letter-spacing: .22em;
+      font-size: 12px;
+      opacity: .9;
+    }
+
+    .navLinks {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 6px;
+      flex-wrap: wrap;
+    }
+
+    .navLinks a {
+      padding: 10px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(242, 238, 252, .82);
+      transition: transform .25s ease, background .25s ease, box-shadow .25s ease, color .25s ease;
+    }
+
+    .navLinks a:hover {
+      background: rgba(177, 0, 255, .10);
+      box-shadow: 0 0 0 1px rgba(177, 0, 255, .18) inset, 0 0 24px rgba(177, 0, 255, .18);
+      color: rgba(255, 255, 255, .95);
+      transform: translateY(-1px);
+    }
+
+    .navRight {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-left: 4px;
+    }
+
+    .miniBtn {
+      border: 1px solid rgba(255, 255, 255, .08);
+      background: rgba(255, 255, 255, .03);
+      color: rgba(242, 238, 252, .9);
+      height: 38px;
+      padding: 0 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform .25s ease, background .25s ease, box-shadow .25s ease;
+    }
+
+    .miniBtn:hover {
+      transform: translateY(-1px);
+      background: rgba(177, 0, 255, .10);
+      box-shadow: 0 0 0 1px rgba(177, 0, 255, .18) inset, 0 0 28px rgba(177, 0, 255, .20);
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 96px 0;
+      position: relative;
+    }
+
+    .sectionHead {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    .kicker {
+      font-family: Space Grotesk, Inter, sans-serif;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .28em;
+      font-size: 14px;
+      opacity: .9;
+    }
+
+    .sub {
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.7;
+      max-width: 62ch;
+    }
+
+    /* HERO */
+    #home {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: calc(var(--navH) + 50px);
+    }
+
+    .heroGrid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .heroCard {
+      padding: 10px 0;
+    }
+
+    .logoIcon {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(177, 0, 255, .20), rgba(109, 44, 255, .08));
+      border: 1px solid rgba(177, 0, 255, .26);
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, .05) inset, 0 18px 60px rgba(177, 0, 255, .10);
+      margin-bottom: 18px;
+    }
+
+    .logoIcon svg {
+      opacity: .95;
+      filter: drop-shadow(0 0 18px rgba(177, 0, 255, .35));
+    }
+
+    h1 {
+      font-family: Space Grotesk, Inter, sans-serif;
+      margin: 0 0 14px;
+      font-size: clamp(48px, 6vw, 76px);
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      line-height: 1.02;
+    }
+
+    .intro {
+      color: rgba(242, 238, 252, .80);
+      font-weight: 300;
+      line-height: 1.8;
+      font-size: 15px;
+      max-width: 66ch;
+      margin: 0 0 26px;
+    }
+
+    .btnRow {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      height: 46px;
+      border-radius: 999px;
+      padding: 0 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 1px solid rgba(255, 255, 255, .10);
+      background: rgba(255, 255, 255, .03);
+      color: rgba(255, 255, 255, .92);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-size: 12px;
+      transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, .03) inset;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      background: rgba(177, 0, 255, .12);
+      box-shadow:
+        0 0 0 1px rgba(177, 0, 255, .22) inset,
+        0 0 30px rgba(177, 0, 255, .18);
+    }
+
+    .btnPrimary {
+      border: 1px solid rgba(177, 0, 255, .35);
+      background: linear-gradient(135deg, rgba(177, 0, 255, .22), rgba(109, 44, 255, .10));
+    }
+
+    .heroSide {
+      padding: 26px;
+      border-radius: var(--radius2);
+      background: linear-gradient(180deg, rgba(12, 7, 23, .70), rgba(8, 4, 14, .55));
+      border: 1px solid rgba(255, 255, 255, .06);
+      box-shadow: var(--shadow2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .heroSide:before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      background:
+        radial-gradient(500px 220px at 20% 0%, rgba(177, 0, 255, .20), transparent 65%),
+        radial-gradient(450px 240px at 80% 40%, rgba(109, 44, 255, .16), transparent 60%),
+        radial-gradient(420px 260px at 50% 105%, rgba(255, 61, 255, .12), transparent 60%);
+      opacity: .9;
+      pointer-events: none;
+    }
+
+    /* PHOTO INSIDE SNAPSHOT CARD */
+    .snapshotPhoto {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--radius2);
+      filter: contrast(1.05) saturate(1.05);
+    }
+
+    /* subtle overlay for depth */
+    .heroSide::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(6, 2, 10, .65) 100%),
+        radial-gradient(500px 240px at 30% 20%, rgba(177, 0, 255, .22), transparent 60%);
+      pointer-events: none;
+    }
+
+    .heroSide>* {
+      position: relative;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 8px;
+    }
+
+    .stat {
+      border-radius: 16px;
+      padding: 14px;
+      background: rgba(0, 0, 0, .18);
+      border: 1px solid rgba(255, 255, 255, .06);
+      box-shadow: 0 0 0 1px rgba(177, 0, 255, .06) inset;
+    }
+
+    .stat b {
+      font-family: Space Grotesk, Inter, sans-serif;
+      display: block;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-size: 12px;
+      opacity: .92;
+      margin-bottom: 8px;
+    }
+
+    .stat span {
+      color: rgba(242, 238, 252, .78);
+      font-weight: 300;
+      line-height: 1.6;
+      font-size: 13px;
+    }
+
+    /* Floating depth */
+    .floaty {
+      transform: translateY(var(--lift, 0px));
+      transition: transform .25s ease;
+      will-change: transform;
+    }
+
+    /* GLOW CARD (dotted border illusion) */
+    .glowCard {
+      position: relative;
+      border-radius: var(--radius2);
+      background: linear-gradient(180deg, rgba(12, 7, 23, .78), rgba(7, 3, 13, .62));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .glowCard:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(255, 61, 255, .65), rgba(177, 0, 255, .45), rgba(109, 44, 255, .25));
+      -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      opacity: .65;
+    }
+
+    .glowCard:after {
+      /* dotted neon shimmer around edges */
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: inherit;
+      background:
+        radial-gradient(2px 2px at 12px 12px, rgba(177, 0, 255, .55) 55%, transparent 56%),
+        radial-gradient(2px 2px at 22px 22px, rgba(109, 44, 255, .40) 55%, transparent 56%),
+        radial-gradient(2px 2px at 30px 30px, rgba(255, 61, 255, .35) 55%, transparent 56%);
+      background-size: 26px 26px;
+      filter: blur(.15px);
+      opacity: .18;
+      pointer-events: none;
+      mask: linear-gradient(#000, #000) content-box, linear-gradient(#000, #000);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+
+    /* PRODUCTS */
+    .cards3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    .product {
+      padding: 16px;
+    }
+
+    .thumb {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, .07);
+      background: rgba(0, 0, 0, .22);
+      box-shadow: 0 0 0 1px rgba(177, 0, 255, .06) inset;
+      aspect-ratio: 16 / 10;
+      position: relative;
+    }
+
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.03);
+      filter: saturate(1.05) contrast(1.05);
+    }
+
+    .thumb:after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(6, 2, 10, .35) 55%, rgba(6, 2, 10, .65) 100%),
+        radial-gradient(500px 200px at 25% 10%, rgba(177, 0, 255, .18), transparent 60%),
+        radial-gradient(380px 180px at 80% 40%, rgba(109, 44, 255, .12), transparent 60%);
+      pointer-events: none;
+    }
+
+    .pTitle {
+      font-family: Space Grotesk, Inter, sans-serif;
+      margin: 16px 0 6px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .pDesc {
+      margin: 0 0 14px;
+      color: rgba(242, 238, 252, .75);
+      font-weight: 300;
+      line-height: 1.75;
+      font-size: 13.5px;
+    }
+
+    /* WORK TIMELINE */
+    .timeline {
+      width: min(860px, 100%);
+      margin: 0 auto;
+      position: relative;
+      padding-left: 26px;
+    }
+
+    .timeline:before {
+      content: "";
+      position: absolute;
+      left: 10px;
+      top: 6px;
+      bottom: 6px;
+      width: 2px;
+      background: linear-gradient(180deg, rgba(177, 0, 255, .45), rgba(109, 44, 255, .18));
+      filter: drop-shadow(0 0 16px rgba(177, 0, 255, .12));
+      opacity: .75;
+    }
+
+    .tItem {
+      position: relative;
+      margin: 0 0 18px;
+      padding-left: 12px;
+    }
+
+    .tDot {
+      position: absolute;
+      left: -4px;
+      top: 18px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, .9), rgba(255, 255, 255, 0) 45%),
+        radial-gradient(circle at 55% 60%, var(--a2), var(--a1) 60%, rgba(0, 0, 0, 0) 62%);
+      box-shadow: 0 0 26px rgba(177, 0, 255, .45);
+      border: 1px solid rgba(255, 255, 255, .10);
+    }
+
+    .tCard {
+      padding: 16px 16px 14px;
+      border-radius: var(--radius2);
+      background: linear-gradient(180deg, rgba(12, 7, 23, .78), rgba(7, 3, 13, .62));
+      border: 1px solid rgba(177, 0, 255, .18);
+      box-shadow: 0 18px 55px rgba(0, 0, 0, .55);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .tCard:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 70px rgba(0, 0, 0, .62), 0 0 28px rgba(177, 0, 255, .12);
+    }
+
+    .tMeta {
+      display: flex;
+      gap: 10px;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 6px;
+    }
+
+    .tYears {
+      font-family: Space Grotesk, Inter, sans-serif;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-size: 12px;
+      opacity: .85;
+      color: rgba(255, 255, 255, .85);
+    }
+
+    .tOrg {
+      color: rgba(242, 238, 252, .88);
+      font-weight: 500;
+      font-size: 13px;
+    }
+
+    .tRole {
+      margin: 6px 0 10px;
+      font-weight: 300;
+      color: rgba(242, 238, 252, .78);
+      line-height: 1.6;
+      font-size: 13px;
+    }
+
+    .tBullets {
+      margin: 0;
+      padding-left: 18px;
+      color: rgba(242, 238, 252, .72);
+      font-weight: 300;
+      line-height: 1.75;
+      font-size: 13px;
+    }
+
+    /* EDUCATION (horizontal timeline) */
+    .eduLine {
+      position: relative;
+      margin-top: 14px;
+      padding: 8px 0 0;
+    }
+
+    .eduLine:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 12px;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(109, 44, 255, .18), rgba(177, 0, 255, .45), rgba(109, 44, 255, .18));
+      opacity: .75;
+    }
+
+    .eduGrid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .eduItem {
+      position: relative;
+      padding-top: 22px;
+    }
+
+    .eduDot {
+      position: absolute;
+      top: 6px;
+      left: 12px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, .9), rgba(255, 255, 255, 0) 45%),
+        radial-gradient(circle at 55% 60%, var(--a2), var(--a1) 60%, rgba(0, 0, 0, 0) 62%);
+      box-shadow: 0 0 26px rgba(177, 0, 255, .42);
+      border: 1px solid rgba(255, 255, 255, .10);
+    }
+
+    .eduCard {
+      padding: 16px;
+      border-radius: var(--radius2);
+      background: linear-gradient(180deg, rgba(12, 7, 23, .78), rgba(7, 3, 13, .62));
+      border: 1px solid rgba(177, 0, 255, .16);
+      box-shadow: 0 18px 55px rgba(0, 0, 0, .55);
+      height: 100%;
+    }
+
+    .eduCard h3 {
+      font-family: Space Grotesk, Inter, sans-serif;
+      margin: 0 0 8px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-size: 13px;
+    }
+
+    .eduCard .years {
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      opacity: .75;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .eduCard ul {
+      margin: 0;
+      padding-left: 18px;
+      color: rgba(242, 238, 252, .72);
+      line-height: 1.75;
+      font-weight: 300;
+      font-size: 13px;
+    }
+
+    /* SPEAKER CAROUSEL */
+    .carouselWrap {
+      position: relative;
+    }
+
+    .carousel {
+      display: flex;
+      gap: 18px;
+      overflow: auto;
+      scroll-snap-type: x mandatory;
+      padding: 8px 2px 18px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(177, 0, 255, .35) rgba(255, 255, 255, .06);
+    }
+
+    .carousel::-webkit-scrollbar {
+      height: 10px;
+    }
+
+    .carousel::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, .06);
+      border-radius: 999px;
+    }
+
+    .carousel::-webkit-scrollbar-thumb {
+      background: rgba(177, 0, 255, .35);
+      border-radius: 999px;
+    }
+
+    .slide {
+      flex: 0 0 260px;
+      scroll-snap-align: start;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, .07);
+      background: rgba(0, 0, 0, .22);
+      box-shadow: 0 18px 60px rgba(0, 0, 0, .58);
+      position: relative;
+      transition: transform .25s ease, box-shadow .25s ease;
+      aspect-ratio: 3 / 4;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.04);
+      filter: contrast(1.04) saturate(1.05);
+    }
+
+    .slide:after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(500px 220px at 25% 10%, rgba(177, 0, 255, .16), transparent 60%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0) 35%, rgba(6, 2, 10, .72) 100%);
+      pointer-events: none;
+    }
+
+    .slide:hover {
+      transform: translateY(-3px) scale(1.01);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, .64), 0 0 30px rgba(177, 0, 255, .12);
+    }
+
+    .carBtns {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      margin-top: 10px;
+    }
+
+    /* ✅ NEW: Speaker label on top of each card */
+    .slideLabel {
+      position: absolute;
+      left: 12px;
+      top: 12px;
+      z-index: 5;
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-family: Space Grotesk, Inter, sans-serif;
+      background: rgba(0, 0, 0, .40);
+      border: 1px solid rgba(255, 255, 255, .10);
+      box-shadow: 0 0 0 1px rgba(177, 0, 255, .10) inset, 0 14px 40px rgba(0, 0, 0, .55);
+      color: rgba(255, 255, 255, .88);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    /* HONORS (tilted 3D grid) */
+    .honorsCenter {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .honorsCenter h2 {
+      font-family: Space Grotesk, Inter, sans-serif;
+      margin: 0 0 10px;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      font-size: clamp(28px, 4vw, 44px);
+    }
+
+    .honorsCenter p {
+      margin: 0;
+      color: rgba(242, 238, 252, .72);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .tiltStage {
+      perspective: 1100px;
+      margin-top: 26px;
+    }
+
+    .tiltGrid {
+      transform: rotateX(12deg) rotateY(-10deg);
+      transform-origin: center;
+      border-radius: 26px;
+      padding: 18px;
+      background: linear-gradient(180deg, rgba(12, 7, 23, .65), rgba(7, 3, 13, .45));
+      border: 1px solid rgba(255, 255, 255, .06);
+      box-shadow: 0 30px 90px rgba(0, 0, 0, .62);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .tiltGrid:before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      background:
+        radial-gradient(900px 360px at 30% 0%, rgba(177, 0, 255, .20), transparent 62%),
+        radial-gradient(860px 360px at 80% 40%, rgba(109, 44, 255, .14), transparent 62%);
+      opacity: .9;
+      pointer-events: none;
+    }
+
+    .certs {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 14px;
+    }
+
+    .cert {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, .07);
+      background: rgba(0, 0, 0, .22);
+      box-shadow: 0 0 0 1px rgba(177, 0, 255, .05) inset;
+      transform: translateZ(0);
+      transition: transform .25s ease, box-shadow .25s ease;
+      aspect-ratio: 4 / 3;
+      position: relative;
+    }
+
+    .cert img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: contrast(1.02) saturate(1.05);
+      transform: scale(1.04);
+    }
+
+    .cert:after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(450px 220px at 25% 10%, rgba(177, 0, 255, .12), transparent 62%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0) 35%, rgba(6, 2, 10, .55) 100%);
+      pointer-events: none;
+    }
+
+    .cert:hover {
+      transform: translateY(-3px) translateZ(6px);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, .62), 0 0 26px rgba(177, 0, 255, .12);
+    }
+
+    .centerBtn {
+      display: flex;
+      justify-content: center;
+      margin-top: 18px;
+    }
+
+    /* CONTACT */
+    .contactCard {
+      padding: 22px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    label {
+      font-size: 12px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      opacity: .8;
+      font-family: Space Grotesk, Inter, sans-serif;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, .08);
+      background: rgba(0, 0, 0, .22);
+      color: rgba(255, 255, 255, .92);
+      outline: none;
+      font-family: Inter, sans-serif;
+      font-weight: 300;
+      box-shadow: 0 0 0 1px rgba(177, 0, 255, .04) inset;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: rgba(177, 0, 255, .30);
+      box-shadow: 0 0 0 1px rgba(177, 0, 255, .20) inset, 0 0 22px rgba(177, 0, 255, .10);
+    }
+
+    footer {
+      padding: 26px 0 44px;
+      color: rgba(242, 238, 252, .55);
+      text-align: center;
+      font-size: 12px;
+      font-weight: 300;
+      letter-spacing: .06em;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px) {
+      .heroGrid {
+        grid-template-columns: 1fr;
+      }
+
+      .cards3 {
+        grid-template-columns: 1fr;
+      }
+
+      .eduGrid {
+        grid-template-columns: 1fr;
+      }
+
+      .eduLine:before {
+        display: none;
+      }
+
+      .eduDot {
+        display: none;
+      }
+
+      .contactCard {
+        grid-template-columns: 1fr;
+      }
+
+      .certs {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .navLinks {
+        display: none;
+      }
+
+      /* Keep clean on small screens */
+    }
+
+    @media (max-width: 520px) {
+      .wrap {
+        width: min(var(--max), calc(100% - 34px));
+      }
+
+      .certs {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .slide {
+        flex-basis: 220px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .floaty,
+      .tCard,
+      .slide,
+      .cert,
+      .btn,
+      .navLinks a {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <div class="navShell">
+    <nav class="nav" aria-label="Primary">
+      <div class="brandMini">
+        <div class="brandDot" aria-hidden="true"></div>
+        <span>EDESA</span>
+      </div>
+
+      <div class="navLinks" role="navigation">
+        <a href="#home">Home</a>
+        <a href="#products">Projects</a>
+        <a href="#work">Work</a>
+        <a href="#speaker">Speaker</a>
+        <a href="#honors">Honors</a>
+        <a href="#community">Education</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="navRight">
+        <button class="miniBtn" type="button" aria-label="Toggle language">EN</button>
+      </div>
+    </nav>
+  </div>
+
+  <!-- HERO -->
+  <section id="home">
+    <div class="wrap">
+      <div class="heroGrid">
+        <div class="heroCard">
+          <div class="logoIcon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2l2.6 6.3L21 11l-6.4 2.7L12 20l-2.6-6.3L3 11l6.4-2.7L12 2z" stroke="rgba(255,255,255,.9)"
+                stroke-width="1.2" />
+            </svg>
+          </div>
+
+          <h1>EDESA</h1>
+
+          <p class="intro">
+            I'm a STEM enthusiast and aspiring tech developer from Kosovo. <br>
+            <span style="color:rgba(242,238,252,.72)">
+              I love creating projects that make learning engaging, and I’m passionate about using technology to make a
+              positive impact in the world.
+            </span>
+          </p>
+
+          <div class="btnRow">
+            <a class="btn btnPrimary" href="#" download>
+              Download CV
+              <span aria-hidden="true">↘</span>
+            </a>
+            <a class="btn" href="#contact">
+              Contact Me
+              <span aria-hidden="true">✦</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="heroSide glowCard floaty" data-float>
+          <img src="EDESA/kye.jpg" alt="Edesa portrait" class="snapshotPhoto" />
+        </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section id="products">
+    <div class="wrap">
+      <div class="sectionHead">
+        <div>
+          <div class="kicker">PROJECTS</div>
+          <div class="sub"></div>
+        </div>
+      </div>
+
+      <div class="cards3">
+        <article class="glowCard product floaty" data-float>
+          <div class="thumb">
+            <img src="EDESA/numiquesthome1.png" alt="NumiQuest">
+          </div>
+          <div class="pTitle">NumiQuest</div>
+          <p class="pDesc">I builded a robotics game that helps children with dyscalculia by making math easier for
+            them.</p>
+          <!-- ✅ NEW: opens project details page -->
+          <a class="btn" href="EDESA/projects.html?id=numiquest">View Details <span aria-hidden="true">→</span></a>
+        </article>
+
+        <article class="glowCard product floaty" data-float>
+          <div class="thumb">
+            <img src="EDESA/mtfs1.jpeg" alt="MTFS">
+          </div>
+          <div class="pTitle">Mapping the Future with STEM</div>
+          <p class="pDesc">I founded Mapping the Future with STEM, an NGO empowering over 100 girls in STEM worldwide
+            through hands-on education and mentorship.</p>
+          <!-- ✅ NEW: opens project details page -->
+          <a class="btn" href="EDESA/projects.html?id=mtfs">View Details <span aria-hidden="true">→</span></a>
+        </article>
+
+        <article class="glowCard product floaty" data-float>
+          <div class="thumb">
+            <img src="EDESA/kye.jpg" alt="Sci-Tank">
+          </div>
+          <div class="pTitle">Sci-Tank</div>
+          <p class="pDesc">I coordinated Sci-Tank,a youth innovation and science fair that connects students with
+            investors, mentors, and industry leaders to turn ideas into real-world solutions.</p>
+          <!-- ✅ NEW: opens project details page -->
+          <a class="btn" href="EDESA/projects.html?id=scitank">View Details <span aria-hidden="true">→</span></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK / EXPERIENCE -->
+  <section id="work">
+    <div class="wrap">
+      <div class="sectionHead" style="justify-content:center; text-align:center;">
+        <div>
+          <div class="kicker">WORK</div>
+        </div>
+      </div>
+
+      <div class="timeline">
+
+        <div class="tItem">
+          <div class="tDot"></div>
+          <div class="tCard floaty">
+            <div class="tMeta">
+              <div class="tYears">2025–2026</div>
+              <div class="tOrg">LinkPlus IT</div>
+            </div>
+            <div class="tRole">Researcher & Web Developer</div>
+            <ul class="tBullets">
+              <li>Recognized as the youngest intern at a multinational software company serving clients in Canada and
+                Western Europe.</li>
+              <li>Supported over 30 engineers and designers in the development of over 5 production applications across
+                multiple industries.</li>
+              <li>Conducted UX and technical research, translating findings into front-end components and interface
+                improvements.</li>
+              <li>Contributed to performance optimization, cross-browser compatibility, and design simulations used in
+                live client products.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tItem">
+          <div class="tDot"></div>
+          <div class="tCard floaty">
+            <div class="tMeta">
+              <div class="tYears">2024–2026</div>
+              <div class="tOrg">Mapping the Future with STEM</div>
+            </div>
+            <div class="tRole">Founder, Software Developer & Chairwoman</div>
+            <ul class="tBullets">
+              <li>Founded and scaled a STEM nonprofit empowering 100+ girls globally through free, intensive tech
+                education.</li>
+              <li>Recruited, trained, and led staff while chairing strategic meetings and overseeing program execution.
+              </li>
+              <li>Launched Kosovo’s first free intensive web development courses, enabling students to build real
+                websites for companies.</li>
+              <li>Mentored participants through full project cycles, from concept to deployment, emphasizing peer-led,
+                hands-on learning.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tItem">
+          <div class="tDot"></div>
+          <div class="tCard floaty">
+            <div class="tMeta">
+              <div class="tYears">2024</div>
+              <div class="tOrg">TechGirls</div>
+            </div>
+            <div class="tRole">Student Ambassador</div>
+            <ul class="tBullets">
+              <li>Selected among 128 girls worldwide from 6,000+ applicants for the U.S. Department of State Fully
+                Funded TechGirls program.</li>
+              <li>Completed advanced web development coursework at Virginia Tech and leadership training led by global
+                experts.</li>
+              <li>Represented Kosovo in U.S. Department of State–led international STEM diplomacy initiatives, including
+                participation at NASA’s Goddard Space Flight Center.</li>
+              <li>Job-shadowed researchers at Children’s Mercy Research Institute, gaining exposure to biomedical
+                research and medical equipment.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tItem">
+          <div class="tDot"></div>
+          <div class="tCard floaty">
+            <div class="tMeta">
+              <div class="tYears">2024</div>
+              <div class="tOrg">AFS Global STEM Accelerators - AFS International & UPenn CSIS</div>
+            </div>
+            <div class="tRole">STEM Accelerator Scholar</div>
+            <ul class="tBullets">
+              <li>Selected among 180 scholars from 1,000+ applicants for a fully funded global STEM accelerator.</li>
+              <li>Completed advanced STEM training emphasizing ethics, innovation, and social impact.</li>
+              <li>Designed and delivered a capstone project addressing real-world challenges through interdisciplinary
+                collaboration.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tItem">
+          <div class="tDot"></div>
+          <div class="tCard floaty">
+            <div class="tMeta">
+              <div class="tYears">2023–2024</div>
+              <div class="tOrg">Academy of Makers – BONEVET</div>
+            </div>
+            <div class="tRole">STEM Program Scholar & Engineer</div>
+            <ul class="tBullets">
+              <li>Awarded a full scholarship to an intensive engineering and technology program.</li>
+              <li>Specialized in Fusion 360, CNC machining, laser cutting, Arduino, and Python.</li>
+              <li>Designed and built a wireless, solar-powered phone charging system as a final engineering project.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tItem">
+          <div class="tDot"></div>
+          <div class="tCard floaty">
+            <div class="tMeta">
+              <div class="tYears">2024–2026</div>
+              <div class="tOrg">Youth Council of the U.S. Embassy</div>
+            </div>
+            <div class="tRole">Education Team Coordinator</div>
+            <ul class="tBullets">
+              <li>Led a 14-member national education team advising the U.S. Embassy on youth-focused educational
+                initiatives.</li>
+              <li>Represented the education team in high-level meetings with embassy officials and partner institutions.
+              </li>
+              <li>Analyzed 130+ youth survey responses, contributing directly to research used by the Embassy’s social
+                media and outreach teams.</li>
+              <li>Coordinated planning and execution of large-scale education and STEM projects nationwide.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tItem">
+          <div class="tDot"></div>
+          <div class="tCard floaty">
+            <div class="tMeta">
+              <div class="tYears">2024</div>
+              <div class="tOrg">Children’s Mercy Research Institute</div>
+            </div>
+            <div class="tRole">Job Shadowing Research Intern</div>
+            <ul class="tBullets">
+              <li>Shadowed biomedical researchers investigating links between placental cell behavior and
+                cardiovascular disease.</li>
+              <li>Observed clinical research pipelines, ethical review processes, and translational medicine practices
+                in a hospital setting.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tItem">
+          <div class="tDot"></div>
+          <div class="tCard floaty">
+            <div class="tMeta">
+              <div class="tYears">2022–2024</div>
+              <div class="tOrg">Kosovo Physics Olympiad Team</div>
+            </div>
+            <div class="tRole">National Team Member</div>
+            <ul class="tBullets">
+              <li>Selected for Kosovo’s national physics team after placing top-ranked nationally in competitive exams.
+              </li>
+              <li>Qualified for IPhO / EuPhO preparation programs and attended advanced training led by university
+                professors.</li>
+              <li>Earned multiple national awards for academic excellence in theoretical and experimental physics.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tItem">
+          <div class="tDot"></div>
+          <div class="tCard floaty">
+            <div class="tMeta">
+              <div class="tYears">2024–2025</div>
+              <div class="tOrg">Sci-Tank</div>
+            </div>
+            <div class="tRole">Coordinator</div>
+            <ul class="tBullets">
+              <li>Spearheaded a national STEM innovation and pitch event connecting youth innovators with investors and
+                institutions.</li>
+              <li>Co-won and implemented a $7,300 U.S. Embassy alumni grant supporting Sci-Tank.</li>
+              <li>Oversaw the planning of multiple meetings, secured deals with companies and organizations, guided 10
+                finalist teams, and hosted 100+ attendees, including government and embassy officials.</li>
+              <li>Raised $2,000 in prize funding awarded to the winning team SmartBin.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tItem">
+          <div class="tDot"></div>
+          <div class="tCard floaty">
+            <div class="tMeta">
+              <div class="tYears">2025</div>
+              <div class="tOrg">European Girls’ Mathematical Olympiad (EGMO)</div>
+            </div>
+            <div class="tRole">U.S. Team Guide & Volunteer Staff</div>
+            <ul class="tBullets">
+              <li>Served as main volunteer staff and U.S. team guide for an international competition hosting 300+
+                participants.</li>
+              <li>Coordinated logistics including transportation, accommodation, scheduling, and volunteer teams.</li>
+              <li>SSupported academic mentoring and smooth execution of one of Europe’s largest girls’ math
+                competitions.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tItem">
+          <div class="tDot"></div>
+          <div class="tCard floaty">
+            <div class="tMeta">
+              <div class="tYears">2024</div>
+              <div class="tOrg">KAMO - Kosovo and Albania Mathematical Olympiad</div>
+            </div>
+            <div class="tRole">Main Volunteer & Organizer</div>
+            <ul class="tBullets">
+              <li>Supported national mathematics and olympiad initiatives by assisting with problem-solving sessions,
+                competition logistics, and student coordination. Helped facilitate academic events aimed at
+                strengthening mathematical talent and preparing students for competitive exams.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tItem">
+          <div class="tDot"></div>
+          <div class="tCard floaty">
+            <div class="tMeta">
+              <div class="tYears">2024</div>
+              <div class="tOrg">Kosova Makers League</div>
+            </div>
+            <div class="tRole">Volunteer</div>
+            <ul class="tBullets">
+              <li>Supported youth-focused robotics and engineering competitions by assisting with event setup, technical
+                troubleshooting, and team coordination. Worked closely with mentors and participants to ensure smooth
+                competition flow and effective hands-on learning experiences.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tItem">
+          <div class="tDot"></div>
+          <div class="tCard floaty">
+            <div class="tMeta">
+              <div class="tYears">2023</div>
+              <div class="tOrg">OJQ TOKA</div>
+            </div>
+            <div class="tRole">Solidarity Action Day Volunteer</div>
+            <ul class="tBullets">
+              <li>Contributed to community-led social initiatives during Solidarity Day by assisting with event
+                organization, participant engagement, and on-site coordination. Supported activities promoting civic
+                responsibility, inclusion, and community solidarity.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tItem">
+          <div class="tDot"></div>
+          <div class="tCard floaty">
+            <div class="tMeta">
+              <div class="tYears">2024-2025</div>
+              <div class="tOrg">Kopshti Miushi Miki</div>
+            </div>
+            <div class="tRole">Volunteer</div>
+            <ul class="tBullets">
+              <li>Volunteered in an early-childhood education setting, supporting educators with classroom activities,
+                student supervision, and learning engagement. Assisted in creating a positive, structured, and
+                supportive environment for young children.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="community">
+    <div class="wrap">
+      <div class="sectionHead">
+        <div>
+          <div class="kicker">EDUCATION</div>
+        </div>
+      </div>
+
+      <div class="eduLine">
+        <div class="eduGrid">
+          <div class="eduItem">
+            <div class="eduDot" aria-hidden="true"></div>
+            <div class="eduCard floaty" data-float>
+              <h3>New York School of Science in Kosova</h3>
+              <span class="years">2022–2025</span>
+              <ul>
+                <li>Maintained a straight-A academic record throughout all four years, graduating with a 4.22 GPA (on a
+                  4.0 scale), demonstrating consistent excellence across rigorous coursework.</li>
+
+                <li>Served as Senior Class President, representing the student body, leading class initiatives, and
+                  working closely with school administration to advocate for student needs and organize major events.
+                </li>
+
+                <li>Founded and led the Biology Club as President, creating opportunities for students to explore
+                  biology beyond the classroom through discussions, projects, and hands-on activities.</li>
+
+
+              </ul>
+            </div>
+          </div>
+
+          <div class="eduItem">
+            <div class="eduDot" aria-hidden="true"></div>
+            <div class="eduCard floaty" data-float>
+              <h3>Ismail Qemali</h3>
+              <span class="years">2012–2022</span>
+              <ul>
+                <li>Selected as <strong>Best Student of the Class</strong> for <strong>four consecutive years
+                    (2018–2022)</strong> based on sustained academic excellence.</li>
+                <li>Ranked <strong>1st in Mathematics and Physics competitions</strong> across the entire school of
+                  <strong>3,000+ students</strong>.
+                </li>
+                <li>Represented the school in multiple academic competitions and events, including the <strong>GJENIU
+                    race</strong>.</li>
+
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+  </section>
+
+  <!-- SPEAKER -->
+  <section id="speaker">
+    <div class="wrap">
+      <div class="sectionHead">
+        <div>
+          <div class="kicker">SPEAKER</div>
+
+        </div>
+        <div class="carBtns">
+          <button class="miniBtn" type="button" id="prevSlide">←</button>
+          <button class="miniBtn" type="button" id="nextSlide">→</button>
+        </div>
+      </div>
+
+      <div class="carouselWrap">
+        <div class="carousel" id="carousel" aria-label="Speaker carousel">
+
+          <!-- ✅ UPDATED: each slide has a label -->
+          <div class="slide floaty" data-float>
+            <div class="slideLabel">Sci-Tank KYE</div>
+            <img src="EDESA/kye.jpg" alt="Speaking on Sci-Tank">
+          </div>
+
+          <div class="slide floaty" data-float>
+            <div class="slideLabel">RTK Live</div>
+            <img src="EDESA/intervista11.png" alt="Speaking on stage 2">
+          </div>
+
+          <div class="slide floaty" data-float>
+            <div class="slideLabel">TëVë1 Live</div>
+            <img src="EDESA/intervista22.png" alt="Panel discussion 1">
+          </div>
+
+          <div class="slide floaty" data-float>
+            <div class="slideLabel">Arte</div>
+            <img src="EDESA/intervista4.png" alt="Conference workshop 1">
+          </div>
+
+          <div class="slide floaty" data-float>
+            <div class="slideLabel">American Corner</div>
+            <img src="EDESA/techgirls1.jpg" alt="Workshop session 1">
+          </div>
+
+          <div class="slide floaty" data-float>
+            <div class="slideLabel">TOKA</div>
+            <img src="EDESA/toka.jpg" alt="Panel discussion 2">
+          </div>
+
+          <div class="slide floaty" data-float>
+            <div class="slideLabel">Smart Academy</div>
+            <img src="EDESA/smartac.png" alt="Stage lighting 1">
+          </div>
+
+          <div class="slide floaty" data-float>
+            <div class="slideLabel">NYSS coding workshop</div>
+            <img src="EDESA/Kosovo-Edesa Ibrahimi.jpg" alt="Audience and talk 1">
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HONORS -->
+  <section id="honors">
+    <div class="wrap">
+      <div class="honorsCenter">
+        <h2>HONORS</h2>
+        <p>I have earned 40+ awards and certificates.</p>
+      </div>
+
+      <div class="tiltStage">
+        <div class="tiltGrid">
+          <div class="certs" aria-label="Certificates grid">
+            <div class="cert"><img src="EDESA/10th_grade.jpeg" alt="Certificate 1"></div>
+            <div class="cert"><img src="EDESA/10th_grade1.jpeg" alt="Certificate 2"></div>
+            <div class="cert"><img src="EDESA/11th_grade.jpeg" alt="Certificate 3"></div>
+            <div class="cert"><img src="EDESA/11th_grade1.jpeg" alt="Certificate 4"></div>
+            <div class="cert"><img src="EDESA/1stcertificate_bonevet.jpeg" alt="Certificate 5"></div>
+            <div class="cert"><img src="EDESA/2ndcertificate_bonevet.jpeg" alt="Certificate 6"></div>
+
+            <div class="cert"><img src="EDESA/9th-grade1.jpg" alt="Certificate 7"></div>
+            <div class="cert"><img src="EDESA/9th_grade.jpg" alt="Certificate 8"></div>
+            <div class="cert"><img src="EDESA/att_certificate.jpeg" alt="Certificate 9"></div>
+            <div class="cert"><img src="EDESA/certification.jpg" alt="Certificate 10"></div>
+            <div class="cert"><img src="EDESA/finalcertificate_bonevet.jpeg" alt="Certificate 11"></div>
+            <div class="cert"><img src="EDESA/mashti_fizike.jpg" alt="Certificate 12"></div>
+
+            <div class="cert"><img src="EDESA/afs.png" alt="Certificate 13"></div>
+            <div class="cert"><img src="EDESA/probit_certificate.jpg" alt="Certificate 14"></div>
+            <div class="cert"><img src="EDESA/WhatsApp Image 2026-01-11 at 23.52.12 (1).jpeg" alt="Certificate 15">
+            </div>
+            <div class="cert"><img src="EDESA/WhatsApp Image 2026-01-11 at 23.52.12 (2).jpeg" alt="Certificate 16">
+            </div>
+            <div class="cert"><img src="EDESA/WhatsApp Image 2026-01-11 at 23.52.12 (3).jpeg" alt="Certificate 17">
+            </div>
+            <div class="cert"><img src="EDESA/WhatsApp Image 2026-01-11 at 23.52.12 (4).jpeg" alt="Certificate 18">
+            </div>
+
+            <div class="cert"><img src="EDESA/WhatsApp Image 2026-01-11 at 23.52.12 (5).jpeg" alt="Certificate 19">
+            </div>
+            <div class="cert"><img src="EDESA/WhatsApp Image 2026-01-11 at 23.52.12.jpeg" alt="Certificate 20"></div>
+            <div class="cert"><img src="EDESA/WhatsApp Image 2026-01-11 at 23.52.13 (1).jpeg" alt="Certificate 21">
+            </div>
+            <div class="cert"><img src="EDESA/WhatsApp Image 2026-01-11 at 23.52.13 (2).jpeg" alt="Certificate 22">
+            </div>
+            <div class="cert"><img src="EDESA/WhatsApp Image 2026-01-11 at 23.52.13 (3).jpeg" alt="Certificate 23">
+            </div>
+            <div class="cert"><img src="EDESA/WhatsApp Image 2026-01-11 at 23.52.13 (4).jpeg" alt="Certificate 24">
+            </div>
+
+            <div class="cert"><img src="EDESA/WhatsApp Image 2026-01-11 at 23.52.13 (5).jpeg" alt="Certificate 25">
+            </div>
+            <div class="cert"><img src="EDESA/WhatsApp Image 2026-01-11 at 23.52.13 (6).jpeg" alt="Certificate 26">
+            </div>
+            <div class="cert"><img src="EDESA/WhatsApp Image 2026-01-11 at 23.52.13 (7).jpeg" alt="Certificate 27">
+            </div>
+            <div class="cert"><img src="EDESA/WhatsApp Image 2026-01-11 at 23.52.13 (8).jpeg" alt="Certificate 28">
+            </div>
+            <div class="cert"><img src="EDESA/WhatsApp Image 2026-01-11 at 23.52.13.jpeg" alt="Certificate 29"></div>
+            <div class="cert"><img src="EDESA/WhatsApp Image 2026-01-11 at 23.52.13 (7).jpeg" alt="Certificate 30">
+            </div>
+          </div>
+        </div>
+
+        <div class="centerBtn">
+          <!-- ✅ NEW: opens honors page -->
+          <a class="btn btnPrimary" href="EDESA/honors.html">View all <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="sectionHead">
+        <div>
+          <div class="kicker">CONTACT</div>
+        </div>
+      </div>
+
+      <div class="glowCard contactCard floaty" data-float>
+        <p>Email: edesssaibrahimi@gmail.com</p>
+        
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © EDESA. All rights reserved.
+  </footer>
+
+  <script>
+    // Smooth anchor scrolling (keeps the nav height in mind) - ONLY for # links
+    (function () {
+      const NAV_OFFSET = 86;
+      document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', (e) => {
+          const id = a.getAttribute('href');
+          const target = document.querySelector(id);
+          if (!target) return;
+          e.preventDefault();
+          const top = target.getBoundingClientRect().top + window.scrollY - NAV_OFFSET;
+          window.scrollTo({ top, behavior: 'smooth' });
+        });
+      });
+    })();
+
+    // Carousel buttons + drag scroll
+    (function () {
+      const rail = document.getElementById('carousel');
+      const prev = document.getElementById('prevSlide');
+      const next = document.getElementById('nextSlide');
+      if (!rail) return;
+
+      const step = () => Math.min(rail.clientWidth * 0.75, 520);
+
+      prev?.addEventListener('click', () => rail.scrollBy({ left: -step(), behavior: 'smooth' }));
+      next?.addEventListener('click', () => rail.scrollBy({ left: step(), behavior: 'smooth' }));
+
+      let isDown = false, startX = 0, scrollLeft = 0;
+      rail.addEventListener('pointerdown', (e) => {
+        isDown = true;
+        rail.setPointerCapture(e.pointerId);
+        startX = e.clientX;
+        scrollLeft = rail.scrollLeft;
+      });
+      rail.addEventListener('pointermove', (e) => {
+        if (!isDown) return;
+        const dx = e.clientX - startX;
+        rail.scrollLeft = scrollLeft - dx;
+      });
+      rail.addEventListener('pointerup', () => { isDown = false; });
+      rail.addEventListener('pointercancel', () => { isDown = false; });
+      rail.addEventListener('mouseleave', () => { isDown = false; });
+    })();
+
+    // Subtle depth / parallax lift
+    (function () {
+      const els = Array.from(document.querySelectorAll('[data-float]'));
+      if (!els.length) return;
+
+      const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
+
+      const tick = () => {
+        const vh = window.innerHeight || 800;
+        for (const el of els) {
+          const r = el.getBoundingClientRect();
+          const mid = r.top + r.height / 2;
+          const t = (mid - vh * 0.5) / (vh * 0.9);
+          const lift = clamp(-t * 8, -10, 10);
+          el.style.setProperty('--lift', lift.toFixed(2) + 'px');
+        }
+      };
+
+      tick();
+      window.addEventListener('scroll', tick, { passive: true });
+      window.addEventListener('resize', tick);
+    })();
+  </script>
+</body>
+
+</html>

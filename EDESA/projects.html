@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>EDESA — Project</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --text:#f2eefc;
+  --muted:#b9b2cc;
+  --a1:#6d2cff;
+  --a2:#ff3dff;
+  --shadow:0 22px 60px rgba(0,0,0,.65);
+  --radius:22px;
+  --max:1120px;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Inter,system-ui;
+  color:var(--text);
+  background:
+    radial-gradient(1200px 700px at 20% 10%, rgba(177,0,255,.14), transparent 60%),
+    linear-gradient(180deg,#020006,#05020a);
+}
+.wrap{width:min(var(--max),calc(100% - 64px));margin:0 auto}
+
+.topbar{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:24px 0
+}
+.brand{display:flex;align-items:center;gap:10px}
+.dot{
+  width:10px;height:10px;border-radius:50%;
+  background:radial-gradient(circle,var(--a2),var(--a1));
+  box-shadow:0 0 20px rgba(177,0,255,.6)
+}
+.brand span{
+  font-family:Space Grotesk;
+  letter-spacing:.22em;font-weight:700;font-size:12px
+}
+.btn{
+  padding:10px 18px;border-radius:999px;
+  border:1px solid rgba(255,255,255,.15);
+  background:rgba(255,255,255,.05);
+  color:#fff;text-decoration:none;
+  font-size:12px;letter-spacing:.12em;text-transform:uppercase
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:28px;
+  padding-bottom:80px
+}
+.glow{
+  background:linear-gradient(180deg,rgba(12,7,23,.8),rgba(7,3,13,.6));
+  border-radius:var(--radius);
+  box-shadow:var(--shadow)
+}
+.projectText{padding:26px}
+.kicker{
+  font-family:Space Grotesk;
+  letter-spacing:.28em;
+  font-size:12px;
+  text-transform:uppercase;
+  margin-bottom:10px
+}
+h1{
+  font-family:Space Grotesk;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  margin:0 0 12px
+}
+.sub{color:rgba(242,238,252,.75);line-height:1.8}
+
+.mediaCol{display:flex;flex-direction:column;gap:14px}
+.media{padding:16px}
+.thumb{
+  aspect-ratio:16/10;
+  overflow:hidden;border-radius:18px;
+  background:#000
+}
+.thumb img{
+  width:100%;height:100%;
+  object-fit:cover
+}
+.caption{
+  margin-top:8px;
+  font-size:13px;
+  color:rgba(242,238,252,.7)
+}
+
+@media(max-width:980px){
+  .grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <div class="brand">
+      <div class="dot"></div>
+      <span>EDESA</span>
+    </div>
+    <a class="btn" href="../edesa.html">← Back</a>
+  </div>
+
+  <div class="grid">
+    <!-- LEFT -->
+    <div class="glow projectText">
+      <div class="kicker">Project</div>
+      <h1 id="pTitle">Loading…</h1>
+      <p class="sub" id="pDesc"></p>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="mediaCol">
+      <div class="glow media">
+        <div class="thumb"><img id="img1"></div>
+        <div class="caption" id="cap1"></div>
+      </div>
+      <div class="glow media">
+        <div class="thumb"><img id="img2"></div>
+        <div class="caption" id="cap2"></div>
+      </div>
+      <div class="glow media">
+        <div class="thumb"><img id="img3"></div>
+        <div class="caption" id="cap3"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const FALLBACK =
+  "https://images.unsplash.com/photo-1526378722484-cc5c510a0f76?auto=format&fit=crop&w=1200&q=80";
+
+const DATA = {
+  numiquest: {
+    title: "NumiQuest",
+    desc: "NumiQuest is an interactive educational game designed to support users with dyscalculia by transforming arithmetic into a physical and intuitive experience. The system combines Python and Arduino to generate arithmetic questions displayed on a screen, personalized with familiar characters from the Booba movie series. Instead of typing numbers, users input answers using a joystick, moving left or right to decrement or increment values and pressing down to submit their response. LEDs provide immediate feedback: green for correct answers, red for incorrect ones, and yellow when the answer is close. NumiQuest addresses a key challenge in education: the mismatch between traditional math instruction and the cognitive needs of learners with dyscalculia. By using movement, visual cues, and graded feedback, the game reduces anxiety and strengthens number sense through embodied interaction. My role in NumiQuest is as the founder and engineer, responsible for designing and building the hardware–software system and shaping the learning interaction.",
+    imgs: ["numiquestprototype1.png", "numiquestarduino1.png", "numiquestplaying1.png"],
+    caps: ["Prototype", "Arduino input", "Learning by playing"]
+  },
+  mtfs: {
+    title: "Mapping the Future with STEM",
+    desc: "Mapping the Future with STEM is an NGO dedicated to making STEM education more accessible, engaging, and inclusive, especially for girls underrepresented in tech fields. Its first official project, CTRL+HER, introduced girls to computer science through hands-on workshops in HTML, CSS, and JavaScript, focusing on logic, problem-solving, and teamwork. What began as a local effort expanded globally, with participants from 17 countries like Egypt, Algeria, Albania, Kosovo, Fiji, and the US taking part. CTRL+HER emphasized peer-led learning and representation, creating a supportive environment where participants could develop technical skills and build confidence to pursue STEM. The project showed how community-based education can cross borders without relying on traditional institutions. My role in Mapping the Future with STEM is founder and chairwoman.",
+    imgs: ["mtfs1.jpeg", "deaprezantim.jpeg", "global.png"],
+    caps: ["CTRL+Her", "Learning", "Global cohort"]
+  },
+  scitank: {
+    title: "Sci-Tank",
+    desc: "Sci-Tank is Kosovo’s first youth innovation and science fair, where young people pitch creative, practical projects that address real challenges in their communities. For Sci-Tank 2025, we brought together over 70 participants who presented 30 project pitches, demonstrating the power of youth-driven innovation and collaboration. As part of the U.S. Embassy Alumni Small Grants Program, I won a $7,300 grant to fund the event. I led the preparation by conducting surveys to identify youth interests, project ideas, and training needs, coordinating participating teams, and guiding them in developing and presenting their pitches. The event highlighted standout projects like Smart Bin, which received $2,000 in financial support from RRONIFER, as well as Curiox and Praktiko, giving participants real-world backing and mentorship. Government representatives, including Acting Minister Rozeta Hajdari, attended and shared motivating messages, while participants gained hands-on experience in scientific thinking, problem-solving, and entrepreneurship. My role in Sci-Tank was as co-lead and project coordinator, responsible for grant acquisition, survey research, team mentorship, and event execution, ensuring that the initiative created meaningful opportunities and impact for Kosovo’s youth.",
+    imgs: ["kye1.jpg", "kye.jpg", "FLM05504.jpg"],
+    caps: ["Event", "Opening Speech", "Awards"]
+  }
+};
+
+const id = new URLSearchParams(window.location.search).get("id");
+const p = DATA[id];
+
+const titleEl = document.getElementById("pTitle");
+const descEl  = document.getElementById("pDesc");
+
+const imgs = [
+  document.getElementById("img1"),
+  document.getElementById("img2"),
+  document.getElementById("img3")
+];
+
+const caps = [
+  document.getElementById("cap1"),
+  document.getElementById("cap2"),
+  document.getElementById("cap3")
+];
+
+if (!p) {
+  titleEl.textContent = "Invalid project link";
+  descEl.textContent  = "Use projects.html?id=numiquest | mtfs | scitank";
+  // Optional: still show something instead of black
+  imgs.forEach((im) => (im.src = FALLBACK));
+} else {
+  titleEl.textContent = p.title;
+  descEl.textContent  = p.desc;
+
+  imgs.forEach((im, i) => {
+    const src = p.imgs[i] || FALLBACK;
+    im.src = src;
+    im.alt = p.caps[i] || p.title;
+    im.onerror = () => { im.src = FALLBACK; };
+    caps[i].textContent = p.caps[i] || "";
+  });
+}
+</script>
+</body>
+</html>
