@@ -145,10 +145,59 @@ const FALLBACK =
 const DATA = {
   numiquest: {
     title: "NumiQuest",
-    desc: "What’s NumiQuest? NumiQuest is an interactive educational game specifically designed to support children with dyscalculia by transforming traditional arithmetic questions into a tangible, multisensory, and intuitive experience. The system integrates both hardware and software components, combining an Arduino microcontroller, LEDs, a joystick, and a Python-based interface to create an engaging learning environment. In NumiQuest, arithmetic questions are generated and displayed on a computer screen, and users interact with the game not by typing numbers but by using the joystick connected to the Arduino. Moving the joystick left or right decreases or increases the selected number, while pressing down submits the answer. This input method leverages kinesthetic learning, allowing children to physically engage with numbers and operations, which has been shown to improve understanding and retention for learners with dyscalculia.The joystick controls almost every interaction in the game. For example, moving the joystick left or right allows the user to select one of four characters displayed on the screen. After selecting the character(s), a math question is generated, and the user inputs their answer using the joystick. Immediate visual feedback is provided via LEDs on the breadboard: green indicates a correct answer, red indicates an incorrect answer, and yellow indicates a nearly correct answer. Once a question has been attempted, the user can choose whether to end the game, try the same question again, or generate a new question, giving them control over their learning pace and experience. To enhance engagement and motivation, questions are personalized with familiar characters from the Booba movie series. This personalization adds an emotional and playful layer to learning, reducing anxiety and creating a positive association with arithmetic practice. In addition, the system incorporates a real-time feedback mechanism using LEDs: a green LED indicates a correct answer, red indicates an incorrect answer, and yellow lights up when the answer is close. This immediate, visual feedback not only reinforces correct responses but also helps learners quickly recognize mistakes, making the learning process iterative and encouraging. The design of NumiQuest reflects a human-centered approach to technology. By combining visual cues, interactive input, and feedback, the system addresses the cognitive challenges faced by children with dyscalculia, strengthening their number sense and problem-solving skills. My role as the founder and engineer involved designing the overall system architecture, building the hardware components, programming the Arduino and Python interface, creating the visual feedback mechanisms, researching the cognitive effects dyscalculia has on the metacognitive process and memory of people and integrating the character personalization of the system.  What led me to create NumiQuest? Since my brother entered first grade, we noticed he struggled significantly with math. Despite constant practice and genuine effort, he would get stuck on simple problems, as if the numbers themselves intimidated him. Tutors, special math classes with abacuses, and shelves of children’s math workbooks piled up beside him, yet nothing seemed to make math actually “click” for him.  We later learned he had dyscalculia, a neurodevelopmental condition that affects numerical processing. Still, I refused to believe that learning mathematics should be inaccessible to people with dyscalculia. That belief led me to build NumiQuest, with the goal of helping him overcome both his math challenges and the anxiety numbers caused him. What did NumiQuest specifically help brother with? This system engaged my brother in multisensory learning: calculating with his favorite characters made him less anxious and more engaged, while the instant LED color feedback helped him quickly recognize mistakes, reinforced his memory, and supported metacognitive monitoring of his problem-solving process. Tasks that once triggered frustration became opportunities for exploration, guided by immediate feedback rather than correction from others. When the LED turned green for correct answers, he became so happy that he kept asking to use the game again and solve multiple problems independently. He stopped freezing, and that meant everything to me as a sister and aspiring tech innovator.Beyond academic improvement, the most meaningful impact was psychological: math no longer felt like something happening to him, but something he could interact with and master. Seeing that shift reinforced my belief that human-centered technology can reshape not just outcomes, but how people experience challenges, agency, and possibility across every domain of life.",
-    imgs: ["numiquestprototype1.png", "numiquestarduino1.png", "numiquestplaying1.png"],
-    caps: ["Prototype", "Arduino input", "Learning by playing"]
-  },
+    sections: [
+      {
+        heading: "Project Overview",
+        text: "NumiQuest is an interactive educational system designed to support children with dyscalculia by transforming traditional arithmetic into a multisensory, intuitive learning experience. By combining physical interaction, visual feedback, and personalized storytelling, the project aims to make mathematics approachable, engaging, and emotionally safe."
+      },
+      {
+        heading: "The Problem",
+        text: "Children with dyscalculia often struggle with numerical processing, number sense, and math-related anxiety. Traditional learning methods—worksheets, repetition, and verbal correction—can intensify frustration rather than build understanding. These challenges often cause children to freeze when facing even simple arithmetic tasks."
+      },
+      {
+        heading: "The Solution",
+        text: "NumiQuest replaces abstract number input with physical interaction. Instead of typing answers, children use a joystick to manipulate values, allowing them to learn through movement, exploration, and trial rather than pressure. This approach supports kinesthetic learning and reduces cognitive overload."
+      },
+      {
+        heading: "How NumiQuest Works",
+        text: "Arithmetic questions are generated and displayed on a computer interface built in Python. Users interact using a joystick connected to an Arduino microcontroller. Moving the joystick left or right decreases or increases the selected number, while pressing it submits the answer. The joystick also enables character selection and navigation throughout the game."
+      },
+      {
+        heading: "Real-Time Feedback System",
+        text: "The system provides immediate visual feedback using LEDs connected to the Arduino. A green light signals a correct answer, red indicates an incorrect one, and yellow represents a nearly correct response. This instant feedback supports metacognitive monitoring, helping learners recognize mistakes independently and learn through iteration."
+      },
+      {
+        heading: "Engagement & Personalization",
+        text: "To increase motivation and emotional connection, math problems are personalized using familiar characters from the Booba movie series. This playful element reduces anxiety, builds comfort with numbers, and creates a positive emotional association with learning."
+      },
+      {
+        heading: "Technology Used",
+        text: "NumiQuest integrates both hardware and software components, including an Arduino microcontroller, joystick module, LEDs, breadboard circuitry, and a Python-based graphical interface. The system bridges physical interaction with digital logic in real time."
+      },
+      {
+        heading: "My Role",
+        text: "As the founder and engineer of NumiQuest, I designed the full system architecture, built the hardware components, programmed the Arduino and Python interface, implemented the LED feedback logic, researched the cognitive and metacognitive effects of dyscalculia, and developed the personalization strategy."
+      },
+      {
+        heading: "Impact",
+        text: "The system significantly reduced my brother’s math-related anxiety. Tasks that once caused frustration became interactive challenges. The instant LED feedback strengthened his confidence and memory, while the playful environment encouraged independent problem-solving."
+      },
+      {
+        heading: "Why This Project Matters",
+        text: "Beyond academic improvement, NumiQuest restored a sense of agency. Math no longer felt like something happening to him, but something he could control and understand. This experience strengthened my belief that human-centered technology has the power to reshape not only learning outcomes, but how people experience challenges, confidence, and possibility."
+      }
+    ],
+    imgs: [
+      "numiquestprototype1.png",
+      "numiquestarduino1.png",
+      "numiquestplaying1.png"
+    ],
+    caps: [
+      "Early hardware prototype",
+      "Arduino-based input system",
+      "Learning through interaction"
+    ]
+  }
   mtfs: {
     title: "Mapping the Future with STEM",
     desc: "Mapping the Future with STEM is an NGO dedicated to making STEM education more accessible, engaging, and inclusive, especially for girls underrepresented in tech fields. Its first official project, CTRL+HER, introduced girls to computer science through hands-on workshops in HTML, CSS, and JavaScript, focusing on logic, problem-solving, and teamwork. What began as a local effort expanded globally, with participants from 17 countries like Egypt, Algeria, Albania, Kosovo, Fiji, and the US taking part. CTRL+HER emphasized peer-led learning and representation, creating a supportive environment where participants could develop technical skills and build confidence to pursue STEM. The project showed how community-based education can cross borders without relying on traditional institutions. My role in Mapping the Future with STEM is founder and chairwoman.",
