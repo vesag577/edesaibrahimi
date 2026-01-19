@@ -77,7 +77,35 @@ h1{
   text-transform:uppercase;
   margin:0 0 12px
 }
-.sub{color:rgba(242,238,252,.75);line-height:1.8}
+.sub{
+  color:rgba(242,238,252,.75);
+  line-height:1.8
+}
+
+/* Section styling (when using "sections") */
+.section{
+  margin-top:14px;
+  padding-top:14px;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.section:first-child{
+  margin-top:0;
+  padding-top:0;
+  border-top:none;
+}
+.section h3{
+  margin:0 0 6px;
+  font-family:Space Grotesk;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  font-size:12px;
+  opacity:.9;
+}
+.section p{
+  margin:0;
+  color:rgba(242,238,252,.75);
+  line-height:1.8;
+}
 
 .mediaCol{display:flex;flex-direction:column;gap:14px}
 .media{padding:16px}
@@ -88,7 +116,8 @@ h1{
 }
 .thumb img{
   width:100%;height:100%;
-  object-fit:cover
+  object-fit:cover;
+  display:block
 }
 .caption{
   margin-top:8px;
@@ -117,21 +146,22 @@ h1{
     <div class="glow projectText">
       <div class="kicker">Project</div>
       <h1 id="pTitle">Loading…</h1>
-      <p class="sub" id="pDesc"></p>
+      <!-- IMPORTANT: changed from <p> to <div> so we can render multiple sections -->
+      <div class="sub" id="pDesc"></div>
     </div>
 
     <!-- RIGHT -->
     <div class="mediaCol">
       <div class="glow media">
-        <div class="thumb"><img id="img1"></div>
+        <div class="thumb"><img id="img1" alt=""></div>
         <div class="caption" id="cap1"></div>
       </div>
       <div class="glow media">
-        <div class="thumb"><img id="img2"></div>
+        <div class="thumb"><img id="img2" alt=""></div>
         <div class="caption" id="cap2"></div>
       </div>
       <div class="glow media">
-        <div class="thumb"><img id="img3"></div>
+        <div class="thumb"><img id="img3" alt=""></div>
         <div class="caption" id="cap3"></div>
       </div>
     </div>
@@ -146,64 +176,28 @@ const DATA = {
   numiquest: {
     title: "NumiQuest",
     sections: [
-      {
-        heading: "Project Overview",
-        text: "NumiQuest is an interactive educational system designed to support children with dyscalculia by transforming traditional arithmetic into a multisensory, intuitive learning experience. By combining physical interaction, visual feedback, and personalized storytelling, the project aims to make mathematics approachable, engaging, and emotionally safe."
-      },
-      {
-        heading: "The Problem",
-        text: "Children with dyscalculia often struggle with numerical processing, number sense, and math-related anxiety. Traditional learning methods—worksheets, repetition, and verbal correction—can intensify frustration rather than build understanding. These challenges often cause children to freeze when facing even simple arithmetic tasks."
-      },
-      {
-        heading: "The Solution",
-        text: "NumiQuest replaces abstract number input with physical interaction. Instead of typing answers, children use a joystick to manipulate values, allowing them to learn through movement, exploration, and trial rather than pressure. This approach supports kinesthetic learning and reduces cognitive overload."
-      },
-      {
-        heading: "How NumiQuest Works",
-        text: "Arithmetic questions are generated and displayed on a computer interface built in Python. Users interact using a joystick connected to an Arduino microcontroller. Moving the joystick left or right decreases or increases the selected number, while pressing it submits the answer. The joystick also enables character selection and navigation throughout the game."
-      },
-      {
-        heading: "Real-Time Feedback System",
-        text: "The system provides immediate visual feedback using LEDs connected to the Arduino. A green light signals a correct answer, red indicates an incorrect one, and yellow represents a nearly correct response. This instant feedback supports metacognitive monitoring, helping learners recognize mistakes independently and learn through iteration."
-      },
-      {
-        heading: "Engagement & Personalization",
-        text: "To increase motivation and emotional connection, math problems are personalized using familiar characters from the Booba movie series. This playful element reduces anxiety, builds comfort with numbers, and creates a positive emotional association with learning."
-      },
-      {
-        heading: "Technology Used",
-        text: "NumiQuest integrates both hardware and software components, including an Arduino microcontroller, joystick module, LEDs, breadboard circuitry, and a Python-based graphical interface. The system bridges physical interaction with digital logic in real time."
-      },
-      {
-        heading: "My Role",
-        text: "As the founder and engineer of NumiQuest, I designed the full system architecture, built the hardware components, programmed the Arduino and Python interface, implemented the LED feedback logic, researched the cognitive and metacognitive effects of dyscalculia, and developed the personalization strategy."
-      },
-      {
-        heading: "Impact",
-        text: "The system significantly reduced my brother’s math-related anxiety. Tasks that once caused frustration became interactive challenges. The instant LED feedback strengthened his confidence and memory, while the playful environment encouraged independent problem-solving."
-      },
-      {
-        heading: "Why This Project Matters",
-        text: "Beyond academic improvement, NumiQuest restored a sense of agency. Math no longer felt like something happening to him, but something he could control and understand. This experience strengthened my belief that human-centered technology has the power to reshape not only learning outcomes, but how people experience challenges, confidence, and possibility."
-      }
+      { heading: "Project Overview", text: "NumiQuest is an interactive educational system designed to support children with dyscalculia by transforming traditional arithmetic into a multisensory, intuitive learning experience. By combining physical interaction, visual feedback, and personalized storytelling, the project aims to make mathematics approachable, engaging, and emotionally safe." },
+      { heading: "The Problem", text: "Children with dyscalculia often struggle with numerical processing, number sense, and math-related anxiety. Traditional learning methods—worksheets, repetition, and verbal correction—can intensify frustration rather than build understanding. These challenges often cause children to freeze when facing even simple arithmetic tasks." },
+      { heading: "The Solution", text: "NumiQuest replaces abstract number input with physical interaction. Instead of typing answers, children use a joystick to manipulate values, allowing them to learn through movement, exploration, and trial rather than pressure. This approach supports kinesthetic learning and reduces cognitive overload." },
+      { heading: "How NumiQuest Works", text: "Arithmetic questions are generated and displayed on a computer interface built in Python. Users interact using a joystick connected to an Arduino microcontroller. Moving the joystick left or right decreases or increases the selected number, while pressing it submits the answer. The joystick also enables character selection and navigation throughout the game." },
+      { heading: "Real-Time Feedback System", text: "The system provides immediate visual feedback using LEDs connected to the Arduino. A green light signals a correct answer, red indicates an incorrect one, and yellow represents a nearly correct response. This instant feedback supports metacognitive monitoring, helping learners recognize mistakes independently and learn through iteration." },
+      { heading: "Engagement & Personalization", text: "To increase motivation and emotional connection, math problems are personalized using familiar characters from the Booba movie series. This playful element reduces anxiety, builds comfort with numbers, and creates a positive emotional association with learning." },
+      { heading: "Technology Used", text: "NumiQuest integrates both hardware and software components, including an Arduino microcontroller, joystick module, LEDs, breadboard circuitry, and a Python-based graphical interface. The system bridges physical interaction with digital logic in real time." },
+      { heading: "My Role", text: "As the founder and engineer of NumiQuest, I designed the full system architecture, built the hardware components, programmed the Arduino and Python interface, implemented the LED feedback logic, researched the cognitive and metacognitive effects of dyscalculia, and developed the personalization strategy." },
+      { heading: "Impact", text: "The system significantly reduced my brother’s math-related anxiety. Tasks that once caused frustration became interactive challenges. The instant LED feedback strengthened his confidence and memory, while the playful environment encouraged independent problem-solving." },
+      { heading: "Why This Project Matters", text: "Beyond academic improvement, NumiQuest restored a sense of agency. Math no longer felt like something happening to him, but something he could control and understand. This experience strengthened my belief that human-centered technology has the power to reshape not only learning outcomes, but how people experience challenges, confidence, and possibility." }
     ],
-    imgs: [
-      "numiquestprototype1.png",
-      "numiquestarduino1.png",
-      "numiquestplaying1.png"
-    ],
-    caps: [
-      "Early hardware prototype",
-      "Arduino-based input system",
-      "Learning through interaction"
-    ]
+    imgs: ["numiquestprototype1.png", "numiquestarduino1.png", "numiquestplaying1.png"],
+    caps: ["Early hardware prototype", "Arduino-based input system", "Learning through interaction"]
   },
+
   mtfs: {
     title: "Mapping the Future with STEM",
     desc: "Mapping the Future with STEM is an NGO dedicated to making STEM education more accessible, engaging, and inclusive, especially for girls underrepresented in tech fields. Its first official project, CTRL+HER, introduced girls to computer science through hands-on workshops in HTML, CSS, and JavaScript, focusing on logic, problem-solving, and teamwork. What began as a local effort expanded globally, with participants from 17 countries like Egypt, Algeria, Albania, Kosovo, Fiji, and the US taking part. CTRL+HER emphasized peer-led learning and representation, creating a supportive environment where participants could develop technical skills and build confidence to pursue STEM. The project showed how community-based education can cross borders without relying on traditional institutions. My role in Mapping the Future with STEM is founder and chairwoman.",
     imgs: ["mtfs1.jpeg", "deaprezantim.jpeg", "global.png"],
     caps: ["CTRL+Her", "Learning", "Global cohort"]
   },
+
   scitank: {
     title: "Sci-Tank",
     desc: "Sci-Tank is Kosovo’s first youth innovation and science fair, where young people pitch creative, practical projects that address real challenges in their communities. For Sci-Tank 2025, we brought together over 70 participants who presented 30 project pitches, demonstrating the power of youth-driven innovation and collaboration. As part of the U.S. Embassy Alumni Small Grants Program, I won a $7,300 grant to fund the event. I led the preparation by conducting surveys to identify youth interests, project ideas, and training needs, coordinating participating teams, and guiding them in developing and presenting their pitches. The event highlighted standout projects like Smart Bin, which received $2,000 in financial support from RRONIFER, as well as Curiox and Praktiko, giving participants real-world backing and mentorship. Government representatives, including Acting Minister Rozeta Hajdari, attended and shared motivating messages, while participants gained hands-on experience in scientific thinking, problem-solving, and entrepreneurship. My role in Sci-Tank was as co-lead and project coordinator, responsible for grant acquisition, survey research, team mentorship, and event execution, ensuring that the initiative created meaningful opportunities and impact for Kosovo’s youth.",
@@ -230,21 +224,41 @@ const caps = [
   document.getElementById("cap3")
 ];
 
+function setFallbackImages() {
+  imgs.forEach((im, i) => {
+    im.src = FALLBACK;
+    im.alt = "Fallback image";
+    if (caps[i]) caps[i].textContent = "";
+  });
+}
+
 if (!p) {
   titleEl.textContent = "Invalid project link";
   descEl.textContent  = "Use projects.html?id=numiquest | mtfs | scitank";
-  // Optional: still show something instead of black
-  imgs.forEach((im) => (im.src = FALLBACK));
+  setFallbackImages();
 } else {
   titleEl.textContent = p.title;
-  descEl.textContent  = p.desc;
+
+  // ✅ Render sections if present, otherwise use desc
+  if (p.sections && Array.isArray(p.sections) && p.sections.length) {
+    descEl.innerHTML = p.sections.map(s => `
+      <div class="section">
+        <h3>${s.heading}</h3>
+        <p>${s.text}</p>
+      </div>
+    `).join("");
+  } else {
+    descEl.textContent = p.desc || "";
+  }
 
   imgs.forEach((im, i) => {
-    const src = p.imgs[i] || FALLBACK;
+    const src = (p.imgs && p.imgs[i]) ? p.imgs[i] : FALLBACK;
     im.src = src;
-    im.alt = p.caps[i] || p.title;
+    im.alt = (p.caps && p.caps[i]) ? p.caps[i] : p.title;
+
     im.onerror = () => { im.src = FALLBACK; };
-    caps[i].textContent = p.caps[i] || "";
+
+    if (caps[i]) caps[i].textContent = (p.caps && p.caps[i]) ? p.caps[i] : "";
   });
 }
 </script>
