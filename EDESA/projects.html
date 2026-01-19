@@ -145,7 +145,43 @@ const FALLBACK =
 const DATA = {
   numiquest: {
     title: "NumiQuest",
-    desc: "NumiQuest is an interactive educational game designed to support users with dyscalculia by transforming arithmetic into a physical and intuitive experience. The system combines Python and Arduino to generate arithmetic questions displayed on a screen, personalized with familiar characters from the Booba movie series. Instead of typing numbers, users input answers using a joystick, moving left or right to decrement or increment values and pressing down to submit their response. LEDs provide immediate feedback: green for correct answers, red for incorrect ones, and yellow when the answer is close. NumiQuest addresses a key challenge in education: the mismatch between traditional math instruction and the cognitive needs of learners with dyscalculia. By using movement, visual cues, and graded feedback, the game reduces anxiety and strengthens number sense through embodied interaction. My role in NumiQuest is as the founder and engineer, responsible for designing and building the hardware–software system and shaping the learning interaction.",
+    desc: "What’s NumiQuest?
+
+
+
+NumiQuest is an interactive educational game specifically designed to support children with dyscalculia by transforming traditional arithmetic questions into a tangible, multisensory, and intuitive experience. The system integrates both hardware and software components, combining an Arduino microcontroller, LEDs, a joystick, and a Python-based interface to create an engaging learning environment. In NumiQuest, arithmetic questions are generated and displayed on a computer screen, and users interact with the game not by typing numbers but by using the joystick connected to the Arduino. Moving the joystick left or right decreases or increases the selected number, while pressing down submits the answer. This input method leverages kinesthetic learning, allowing children to physically engage with numbers and operations, which has been shown to improve understanding and retention for learners with dyscalculia.
+
+The joystick controls almost every interaction in the game. For example, moving the joystick left or right allows the user to select one of four characters displayed on the screen. After selecting the character(s), a math question is generated, and the user inputs their answer using the joystick. Immediate visual feedback is provided via LEDs on the breadboard: green indicates a correct answer, red indicates an incorrect answer, and yellow indicates a nearly correct answer. Once a question has been attempted, the user can choose whether to end the game, try the same question again, or generate a new question, giving them control over their learning pace and experience.
+
+To enhance engagement and motivation, questions are personalized with familiar characters from the Booba movie series. This personalization adds an emotional and playful layer to learning, reducing anxiety and creating a positive association with arithmetic practice. In addition, the system incorporates a real-time feedback mechanism using LEDs: a green LED indicates a correct answer, red indicates an incorrect answer, and yellow lights up when the answer is close. This immediate, visual feedback not only reinforces correct responses but also helps learners quickly recognize mistakes, making the learning process iterative and encouraging.
+
+The design of NumiQuest reflects a human-centered approach to technology. By combining visual cues, interactive input, and feedback, the system addresses the cognitive challenges faced by children with dyscalculia, strengthening their number sense and problem-solving skills. My role as the founder and engineer involved designing the overall system architecture, building the hardware components, programming the Arduino and Python interface, creating the visual feedback mechanisms, researching the cognitive effects dyscalculia has on the metacognitive process and memory of people and integrating the character personalization of the system. 
+
+
+
+
+
+What led me to create NumiQuest?
+
+
+
+Since my brother entered first grade, we noticed he struggled significantly with math. Despite constant practice and genuine effort, he would get stuck on simple problems, as if the numbers themselves intimidated him. Tutors, special math classes with abacuses, and shelves of children’s math workbooks piled up beside him, yet nothing seemed to make math actually “click” for him. 
+
+We later learned he had dyscalculia, a neurodevelopmental condition that affects numerical processing. Still, I refused to believe that learning mathematics should be inaccessible to people with dyscalculia. That belief led me to build NumiQuest, with the goal of helping him overcome both his math challenges and the anxiety numbers caused him.
+
+
+
+
+
+What did NumiQuest specifically help brother with?
+
+
+
+This system engaged my brother in multisensory learning: calculating with his favorite characters made him less anxious and more engaged, while the instant LED color feedback helped him quickly recognize mistakes, reinforced his memory, and supported metacognitive monitoring of his problem-solving process. Tasks that once triggered frustration became opportunities for exploration, guided by immediate feedback rather than correction from others.
+
+When the LED turned green for correct answers, he became so happy that he kept asking to use the game again and solve multiple problems independently. He stopped freezing, and that meant everything to me as a sister and aspiring tech innovator.
+
+Beyond academic improvement, the most meaningful impact was psychological: math no longer felt like something happening to him, but something he could interact with and master. Seeing that shift reinforced my belief that human-centered technology can reshape not just outcomes, but how people experience challenges, agency, and possibility across every domain of life.",
     imgs: ["numiquestprototype1.png", "numiquestarduino1.png", "numiquestplaying1.png"],
     caps: ["Prototype", "Arduino input", "Learning by playing"]
   },
